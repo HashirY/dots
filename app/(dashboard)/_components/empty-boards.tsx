@@ -5,10 +5,12 @@ import { api } from "@/convex/_generated/api";
 import { useOrganization } from "@clerk/nextjs";
 import { useApiMutation } from "@/hooks/user-api-mutation";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export const EmptyBoards = () => {
   const { organization } = useOrganization();
   const { mutate, pending } = useApiMutation(api.board.create);
+  const router = useRouter();
 
   // so here we kindoff bypasssed usemutation and used it in useapimutation with one more feature
 
@@ -22,6 +24,7 @@ export const EmptyBoards = () => {
       .then((id) => {
         toast.success("Board Created");
         // todo redirect to board/id
+        router.push(`/board/${id}`);
       })
       .catch((err) => {
         toast.error("Failed to create board");

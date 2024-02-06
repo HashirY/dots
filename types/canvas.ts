@@ -116,7 +116,7 @@ export type CanvasState =
       origin: Point;
     }
   | {
-      mode: CanvasMode.Resiszing;
+      mode: CanvasMode.Resisizing;
       initialBounds: XYWH;
       corner: Side;
     };
@@ -127,6 +127,6 @@ export enum CanvasMode {
   SelectionNet,
   Translating,
   Inserting,
-  Resiszing,
+  Resisizing,
   Pencil,
 }
